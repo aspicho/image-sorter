@@ -20,16 +20,48 @@
    <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>762</width>
+         <height>467</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="imageLabel">
+          <property name="text">
+           <string>Nothing here... Just both of us...</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
-    <item>
+    <item row="1" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="folderPathSelector">
+       <widget class="QPushButton" name="folderPathSelectorButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
-         <string>folderPath</string>
+         <string>Select Folder</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -41,9 +73,15 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="fileNameLable">
+       <widget class="QPushButton" name="fileNameButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>FileName</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -57,14 +95,7 @@
       <item>
        <widget class="QLabel" name="amountLable">
         <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="Line" name="line_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <string>Amount</string>
         </property>
        </widget>
       </item>
@@ -82,43 +113,71 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLineEdit" name="catAddLineEdit">
-        <property name="maximumSize">
+       <widget class="QComboBox" name="catListComboBox">
+        <property name="minimumSize">
          <size>
           <width>150</width>
-          <height>16777215</height>
+          <height>0</height>
          </size>
         </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
-        <property name="text">
-         <string/>
+        <property name="editable">
+         <bool>true</bool>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="placeholderText">
-         <string extracomment="Name for new Folder/Category"/>
+        <property name="currentText">
+         <string>New Category Name</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="addButton">
+       <widget class="QPushButton" name="addCatButton">
         <property name="maximumSize">
          <size>
           <width>45</width>
           <height>16777215</height>
          </size>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Add</string>
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="delCatButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>45</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Del</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
-    <item>
+    <item row="2" column="0">
      <layout class="QGridLayout" name="buttonsGrigLayout" rowstretch="0">
       <property name="sizeConstraint">
        <enum>QLayout::SetMinimumSize</enum>
