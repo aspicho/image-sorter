@@ -22,7 +22,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
         self.setAmount()
         
     def setAmount(self):
-        self.amountLable.setText(f'{self.currFile}/{len(self.files)}')
+        self.amountLabel.setText(f'{self.currFile}/{len(self.files)}')
     
     def setFileName(self):
         self.fileNameButton.setText(f'{self.files[self.currFile]}')
@@ -57,6 +57,23 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
             self.displayImage()
             self.setAmount()
             self.setFileName()
+        else:
+            self.resetState()
+
+    def resetState(self):
+        self.folder = None
+        self.folders = []
+        self.files = []
+        self.currFile = 0
+        self.imageLabel.clear()
+        self.imageLabel.setText('Nothing here... Just both of us...')
+        self.folderPathSelectorButton.setText('Select Folder')
+        self.fileNameButton.setText('FileName')
+        self.amountLabel.setText('Amount')
+        self.catListComboBox.clear()
+        self.addButtonsForCategories()
+        self.catListComboBox.setEditText('New Category Name')
+
 
     def displayImage(self):
         path_to_image = os.path.join(self.folder, self.files[self.currFile])

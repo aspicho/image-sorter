@@ -93,7 +93,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="amountLable">
+       <widget class="QLabel" name="amountLabel">
         <property name="text">
          <string>Amount</string>
         </property>
