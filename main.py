@@ -1,7 +1,7 @@
 import os
 import sys
 from PyQt6 import QtGui, QtWidgets
-from PyQt6.QtWidgets import QMessageBox, QFileDialog
+from PyQt6.QtWidgets import QMessageBox, QFileDialog, QSizePolicy
 from main_window import Ui_mainWindow
 
 
@@ -50,6 +50,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
 
     def move_to_category(self, category):
         '''Moves current file to the given category'''
+        if len(self.files) == 0:
+            return
+
         file_name = self.files[self.curr_file]
 
         path_to_file = os.path.join(self.folder, file_name)
@@ -84,6 +87,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
         '''Displays image from the current file in the label'''
         path_to_image = os.path.join(self.folder, self.files[self.curr_file])
         self.imageLabel.setPixmap(QtGui.QPixmap(path_to_image))
+        self.imageLabel.setScaledContents(True)
+        self.imageLabel.setSizePolicy(QSizePolicy.Policy.Ignored,
+                                      QSizePolicy.Policy.Ignored)
         self.imageLabel.show()
 
     def set_categories(self):
@@ -104,10 +110,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
                     self.files.append(item)
             else:
                 self.folders.append(item)
-        self.set_amount()
-        self.set_filename()
         self.set_categories()
-        self.display_image()
+
+        if len(self.files) != 0:
+            self.set_amount()
+            self.set_filename()
+            self.display_image()
 
     def add_category(self):
         '''Adds new category with the name of the text of combobox'''
